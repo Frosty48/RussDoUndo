@@ -1,0 +1,31 @@
+﻿<Window x:Class="RussInventoryCommandPattern.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RussInventoryCommandPattern"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Inventory Management" HorizontalAlignment="Center" FontSize="16" Margin="10"/>
+        <Label Content="Enter Item Name" HorizontalAlignment="Left" Margin="51,73,0,0" Grid.Row="4" VerticalAlignment="Top"/>
+        <TextBox x:Name="txbItemName" HorizontalAlignment="Left" Margin="49,99,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAddOneItem" Content="Add One Item" HorizontalAlignment="Left" Margin="61,132,0,0" Grid.Row="4" VerticalAlignment="Top" Click="btnAddOneItem_Click"/>
+        <Button x:Name="btnAdRandomNumber" Content="Add random number" HorizontalAlignment="Left" Margin="63,179,0,0" Grid.Row="4" VerticalAlignment="Top" Click="btnAdRandomNumber_Click"/>
+        <Button x:Name="btnUndo" Content="Undo" HorizontalAlignment="Left" Margin="62,227,0,0" Grid.Row="4" Click="btnUndo_Click"/>
+        <ListBox x:Name="listbInventoryList" Grid.Row="4" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="286,74,172,-60"/>
+
+
+
+
+
+    </Grid>
+</Window>
