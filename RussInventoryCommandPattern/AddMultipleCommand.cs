@@ -13,10 +13,12 @@ namespace RussInventoryCommandPattern
         public List<InventoryCommandPattern> TargetList { get; set; }
         private int number;
 
-        public AddMultipleCommand(InventoryCommandPattern item, List<InventoryCommandPattern> targetList)
-        { 
+
+        public AddMultipleCommand(InventoryCommandPattern item, List<InventoryCommandPattern> targetList, int numberOfItemsToAdd)
+        {
             Item = item;
             TargetList = targetList;
+            number = numberOfItemsToAdd; // Set the number of items to add based on the provided argument
         }
 
         public void Do()

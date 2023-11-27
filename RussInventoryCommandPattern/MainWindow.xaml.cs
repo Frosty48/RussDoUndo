@@ -35,12 +35,12 @@ namespace RussInventoryCommandPattern
         private int GenerateRandomNumber()
         {
             Random random = new Random();
-            return random.Next(1, 6); // Generates a random number between 1 and 5
+            return random.Next(1, 101); // Generates a random number between 1 and 5
         }
 
         private void btnAddOneItem_Click(object sender, RoutedEventArgs e)
         {
-            string itemName = txbItemName.Text;
+            string itemName = txbItemName.Text;         
             if (!string.IsNullOrEmpty(itemName))
             {
                 InventoryItem newItem = new InventoryItem(itemName);
@@ -48,51 +48,63 @@ namespace RussInventoryCommandPattern
                 addOneCommand.Do();
                 commands.Add(addOneCommand);
 
+                // Assuming listBoxItems is your ListBox control
+                listbInventoryList.Items.Clear(); // Clear existing items in the ListBox
 
+                // Iterate through inventoryItems and add item names to the ListBox
+                foreach (InventoryItem item in inventoryItems)
+                {
+                    listbInventoryList.Items.Add(item.Name); // Add item names to the ListBox
+                }
             }
+
         }
 
         private void btnAdRandomNumber_Click(object sender, RoutedEventArgs e)
         {
-            
-                string itemName = txbItemName.Text;
-                if (!string.IsNullOrEmpty(itemName))
-                {
-                    // Create a new inventory item
-                    InventoryItem newItem = new InventoryItem(itemName);
 
-                    // Assuming you have a method to generate a random number of items (Replace GenerateRandomNumber() with your method)
-                    int numberOfItemsToAdd = GenerateRandomNumber();
+            Random rand = new Random();
+            int randomNumber = GenerateRandomNumber(); // Generates a random number between 1 and 100 (adjust the range as needed)
 
-                    // Instantiate AddMultipleCommand object with the new inventory item and inventoryItems list
-                    AddMultipleCommand addMultipleCommand = new AddMultipleCommand(  numberOfItemsToAdd,newItem);
-
-                    // Execute the command's Do method to add a random number of items
-                    addMultipleCommand.Do();
-
-                    // Add the command to the commands list
-                    commands.Add(addMultipleCommand);
-                }
+            // Add the random number to the ListBox
+            listbInventoryList.Items.Add(randomNumber);
         }
 
         private void btnUndo_Click(object sender, RoutedEventArgs e)
         {
-                if (commands.Count > 0)
-                {
-                    int lastIndex = commands.Count - 1;
-                    commands[lastIndex].Undo();
-                    commands.RemoveAt(lastIndex);
 
-                IInventoryCommand lastCommand = commands.Last();
+            if (commands.Count > 0)
+            {
+                int lastIndex = commands.Count - 1;
 
-                //// Call the Undo method for the last command
+                // Undo the last command
+                IInventoryCommand lastCommand = commands[lastIndex];
                 lastCommand.Undo();
 
-                //// Remove the last command from the commands list
-                commands.Remove(lastCommand);
-                }
-         }
+                // Remove the last command from the commands list
+                commands.RemoveAt(lastIndex);
 
-        
+                // Remove the last item from the ListBox
+                if (listbInventoryList.Items.Count > 0)
+                {
+                    listbInventoryList.Items.RemoveAt(listbInventoryList.Items.Count - 1);
+                }
+                else
+                {
+                    Console.WriteLine("No items in the ListBox to undo.");
+                    // Handle this case based on your application's requirements
+                }
+            }
+            else
+            {
+                Console.WriteLine("No commands to undo.");
+                // Handle this case based on your application's requirements
+            }
+
+    
+
+        }
     }
-}
+
+}     
+    
