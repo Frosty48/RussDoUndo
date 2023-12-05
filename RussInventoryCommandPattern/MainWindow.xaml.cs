@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ Programmer: Jerrell Russ
+email:  jruss1@cnm.edu
+This is P6. its supposed  to show and demonstrate operation for list boxes
+ */
+
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -92,13 +102,13 @@ namespace RussInventoryCommandPattern
                 else
                 {
                     Console.WriteLine("No items in the ListBox to undo.");
-                    // Handle this case based on your application's requirements
+                   
                 }
             }
             else
             {
                 Console.WriteLine("No commands to undo.");
-                // Handle this case based on your application's requirements
+                
             }
 
     

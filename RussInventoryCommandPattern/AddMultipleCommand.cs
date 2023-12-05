@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ Programmer: Jerrell Russ
+email:  jruss1@cnm.edu
+This is P6. its supposed  to show and demonstrate operation for list boxes
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +28,7 @@ namespace RussInventoryCommandPattern
             number = numberOfItemsToAdd; // Set the number of items to add based on the provided argument
         }
 
-        public void Do()
+        public void Do()//this is do.  supposed to generate a random number
         {
             Random rand = new Random();
             number = rand.Next(1, 6);
